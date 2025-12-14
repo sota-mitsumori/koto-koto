@@ -4,7 +4,6 @@
 
 <img width="2048" height="2048" alt="koto-koto_banner" src="https://github.com/user-attachments/assets/80f81de5-e797-4387-8cee-efc4ef408129" />
 
-
 ## Overview
 
 **Koto-Koto** is a minimalist, zen-inspired Japanese typing game designed to induce a state of flow. Unlike frantic arcade typing games, Koto-Koto focuses on rhythm, aesthetics, and the beauty of the Japanese language.
@@ -13,30 +12,32 @@ Built with **Next.js 16**, **TypeScript**, and **Framer Motion**, it features a 
 
 ## ✨ Features
 
-- **Zen Aesthetics**: A Deep Zen Dark theme with "Matcha", "Sakura", and "Gold" accents. Use of Mincho typography for a literary feel.
-- **Intelligent Typing Engine**:
-  - **Flexible Romaji**: Supports multiple input styles (Hepburn, Kunrei-shiki). Accepts `si`/`shi`, `tu`/`tsu`, `c`/`k`, etc.
-  - **N-Permisiveness**: gracefully handles the tricky `n` vs `nn` logic.
-- **Immersive Audio**: Procedurally generated wooden keystroke sounds using the Web Audio API (no external assets).
-- **Strict Grading System**:
-  - **Zen Titles**: Earn ranks from "Novice" to "Koto Master" and special S-Ranks.
-  - **Detailed Stats**: Tracks WPM, Accuracy, KPM, and Max Combo.
-- **Modern Tech Stack**: Fully responsive, strictly typed, and built for performance.
+-   **Dynamic Seasonal Atmosphere** (花鳥風月 - Kacho-Fugetsu): Real-time visual themes based on Japan's 4 seasons with seasonal particle animations (🌸💧🍂❄️).
+-   **Time-of-Day System** (移ろい - Utsuroi): Visual atmosphere changes throughout the day (Morning/Day/Sunset/Night) with brightness and saturation adjustments.
+-   **Zen Aesthetics**: A Deep Zen Dark theme with dynamic color adjustment based on time. Use of Mincho typography for a literary feel.
+-   **Intelligent Typing Engine**:
+    -   **Flexible Romaji**: Supports multiple input styles (Hepburn, Kunrei-shiki). Accepts `si`/`shi`, `tu`/`tsu`, `c`/`k`, etc.
+    -   **N-Permisiveness**: gracefully handles the tricky `n` vs `nn` logic.
+-   **Immersive Audio**: Procedurally generated wooden keystroke sounds using the Web Audio API (no external assets).
+-   **Strict Grading System**:
+    -   **Zen Titles**: Earn ranks from "Novice" to "Koto Master" and special S-Ranks.
+    -   **Detailed Stats**: Tracks WPM, Accuracy, KPM, and Max Combo.
+-   **Modern Tech Stack**: Fully responsive, strictly typed, and built for performance.
 
 ## 🛠️ Tech Stack
 
-- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Animation**: [Framer Motion](https://www.framer.com/motion/)
-- **Icons**: [Lucide React](https://lucide.dev/)
+-   **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+-   **Language**: [TypeScript](https://www.typescriptlang.org/)
+-   **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+-   **Animation**: [Framer Motion](https://www.framer.com/motion/)
+-   **Icons**: [Lucide React](https://lucide.dev/)
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js 18+
-- npm
+-   Node.js 18+
+-   npm
 
 ### Installation
 
@@ -63,31 +64,41 @@ Built with **Next.js 16**, **TypeScript**, and **Framer Motion**, it features a 
 
 ## 📂 Project Structure
 
-The project follows a **Feature-based Architecture** for scalability and maintainability.
+The project follows a **Feature-based Architecture** with **Dynamic Atmosphere System** (Season × Time-of-Day).
 
 ```
 src/
 ├── app/                 # Next.js App Router
-├── components/          # Shared aesthetic components (e.g., MobileBlocker)
-├── config/              # Centralized constants (Theme, Game Config)
+├── components/          # Shared aesthetic components (SeasonalParticles, MobileBlocker)
+├── config/              # Centralized constants
 │   ├── gameConfig.ts    # Scoring thresholds, total sentences
-│   └── theme.ts         # Color palettes, fonts
+│   ├── theme.ts         # Color palettes, fonts
+│   ├── seasons.ts       # 4-season atmosphere system
+│   └── timeOfDay.ts     # 4-time-of-day system
+├── contexts/            # React Context (State Management)
+│   └── SeasonalContext.tsx  # Seasonal + Time-of-day theme provider
 ├── data/                # Word lists and content
 ├── features/            # Feature-based modules
 │   ├── game/            # Core Game Logic
-│   │   ├── components/  # TypingArea, etc.
+│   │   ├── components/  # TitleScreen, GameHeader, TypingArea
 │   │   └── hooks/       # useTypingEngine, useGameSession, useSound
 │   └── result/          # Result Screen Logic
 │       ├── components/  # ResultScreen
 │       └── utils/       # Rank calculation logic
-└── lib/                 # Core utilities (Romaji parser)
+├── lib/                 # Core utilities
+│   ├── romaji.ts        # Romaji parser
+│   └── formatters.ts    # Time and score formatters
+├── hooks/               # Custom hooks
+│   └── useSeason.ts     # Season + Time-of-day detection
+└── data/                # Static content
+    └── words.ts         # Word list
 ```
 
 ## 🎨 Design Philosophy
 
-- **Visuals**: High contrast text with glowing carets against a noisy, deep-dark background.
-- **Typography**: `Zen Old Mincho` for Japanese text, `Inter` for UI elements.
-- **Feedback**: Subtle ripples and camera shakes (optional) provide physical feedback without breaking focus.
+-   **Visuals**: High contrast text with glowing carets against a noisy, deep-dark background.
+-   **Typography**: `Zen Old Mincho` for Japanese text, `Inter` for UI elements.
+-   **Feedback**: Subtle ripples and camera shakes (optional) provide physical feedback without breaking focus.
 
 ## 🤝 Contributing
 
