@@ -2,10 +2,10 @@
 
 import React, { createContext, useContext, ReactNode } from "react";
 import { useSeason } from "../hooks/useSeason";
-import type { SeasonalTheme } from "../config/seasons";
+import type { CombinedTheme } from "../config/seasons";
 
 interface SeasonalContextValue {
-    theme: SeasonalTheme;
+    theme: CombinedTheme;
 }
 
 const SeasonalContext = createContext<SeasonalContextValue | null>(null);
@@ -15,7 +15,7 @@ interface SeasonalProviderProps {
 }
 
 /**
- * Provides seasonal theme to all child components
+ * Provides seasonal + time-of-day theme to all child components
  * Prevents unnecessary re-fetching of seasonal data across the component tree
  */
 export function SeasonalProvider({ children }: SeasonalProviderProps) {
@@ -29,10 +29,10 @@ export function SeasonalProvider({ children }: SeasonalProviderProps) {
 }
 
 /**
- * Hook to access the current seasonal theme
+ * Hook to access the current seasonal + time-of-day theme
  * Must be used within SeasonalProvider
  */
-export function useSeasonalTheme(): SeasonalTheme {
+export function useSeasonalTheme(): CombinedTheme {
     const context = useContext(SeasonalContext);
     if (!context) {
         throw new Error(

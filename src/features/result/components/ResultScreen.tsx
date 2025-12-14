@@ -62,7 +62,7 @@ export default function ResultScreen({
                 transition={{ delay: 0.2, type: "spring" }}
                 className={`text-7xl md:text-8xl font-zen-old-mincho tracking-tighter mb-2 ${color} transition-all duration-1000`}
                 style={{
-                    filter: `drop-shadow(0 0 30px ${seasonalTheme.colors.glow})`,
+                    filter: `drop-shadow(0 0 30px ${seasonalTheme.adjustedColors.glow})`,
                 }}
             >
                 {grade}
@@ -77,7 +77,9 @@ export default function ResultScreen({
                 {/* Main Stats */}
                 <div
                     className="col-span-1 bg-white/5 rounded-lg p-4 md:p-5 flex flex-col items-center justify-center backdrop-blur-sm border transition-colors duration-1000"
-                    style={{ borderColor: `${seasonalTheme.colors.primary}30` }}
+                    style={{
+                        borderColor: `${seasonalTheme.adjustedColors.primary}30`,
+                    }}
                 >
                     <span className="text-[10px] md:text-xs text-subtle-gray uppercase tracking-widest mb-1 font-medium">
                         WPM
@@ -91,7 +93,9 @@ export default function ResultScreen({
                 </div>
                 <div
                     className="col-span-1 bg-white/5 rounded-lg p-4 md:p-5 flex flex-col items-center justify-center backdrop-blur-sm border transition-colors duration-1000"
-                    style={{ borderColor: `${seasonalTheme.colors.primary}30` }}
+                    style={{
+                        borderColor: `${seasonalTheme.adjustedColors.primary}30`,
+                    }}
                 >
                     <span className="text-[10px] md:text-xs text-subtle-gray uppercase tracking-widest mb-1 font-medium">
                         Accuracy
@@ -107,7 +111,7 @@ export default function ResultScreen({
                     <div
                         className="bg-white/5 rounded-lg p-3 md:p-4 flex flex-col items-center border transition-colors duration-1000"
                         style={{
-                            borderColor: `${seasonalTheme.colors.primary}20`,
+                            borderColor: `${seasonalTheme.adjustedColors.primary}20`,
                         }}
                     >
                         <span className="text-[8px] md:text-[10px] text-subtle-gray uppercase tracking-widest">
@@ -123,7 +127,7 @@ export default function ResultScreen({
                     <div
                         className="bg-white/5 rounded-lg p-3 md:p-4 flex flex-col items-center border transition-colors duration-1000"
                         style={{
-                            borderColor: `${seasonalTheme.colors.primary}20`,
+                            borderColor: `${seasonalTheme.adjustedColors.primary}20`,
                         }}
                     >
                         <span className="text-[8px] md:text-[10px] text-subtle-gray uppercase tracking-widest">
@@ -136,7 +140,7 @@ export default function ResultScreen({
                     <div
                         className="bg-white/5 rounded-lg p-3 md:p-4 flex flex-col items-center border transition-colors duration-1000"
                         style={{
-                            borderColor: `${seasonalTheme.colors.primary}20`,
+                            borderColor: `${seasonalTheme.adjustedColors.primary}20`,
                         }}
                     >
                         <span className="text-[8px] md:text-[10px] text-subtle-gray uppercase tracking-widest">
@@ -149,7 +153,7 @@ export default function ResultScreen({
                     <div
                         className="bg-white/5 rounded-lg p-3 md:p-4 flex flex-col items-center cursor-pointer hover:bg-white/10 transition-all duration-300 border"
                         style={{
-                            borderColor: `${seasonalTheme.colors.primary}20`,
+                            borderColor: `${seasonalTheme.adjustedColors.primary}20`,
                         }}
                         onClick={handleShare}
                     >
@@ -158,7 +162,9 @@ export default function ResultScreen({
                         </span>
                         <Share2
                             className="w-4 h-4 md:w-5 md:h-5 mt-1 transition-colors duration-1000"
-                            style={{ color: seasonalTheme.colors.primary }}
+                            style={{
+                                color: seasonalTheme.adjustedColors.primary,
+                            }}
                         />
                     </div>
                 </div>

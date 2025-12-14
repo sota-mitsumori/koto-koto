@@ -1,7 +1,13 @@
 /**
  * Seasonal Atmosphere System (花鳥風月 - Kacho-Fugetsu)
- * Dynamically changes visual atmosphere based on real-world calendar
+ * Combined with Time-of-Day System (移ろい - Utsuroi)
  */
+
+import {
+    getCurrentTimeTheme,
+    type TimeOfDay,
+    type TimeTheme,
+} from "./timeOfDay";
 
 export type Season = "spring" | "summer" | "autumn" | "winter";
 
@@ -25,6 +31,17 @@ export interface SeasonalTheme {
         gradient: string;
     };
     haiku: string; // Short seasonal impression in Japanese
+}
+
+export interface CombinedTheme extends SeasonalTheme {
+    timeOfDay: TimeOfDay;
+    timeName: { ja: string; en: string };
+    timeTheme: TimeTheme;
+    adjustedColors: {
+        background: string;
+        primary: string;
+        glow: string;
+    };
 }
 
 export const SEASONAL_THEMES: Record<Season, SeasonalTheme> = {
@@ -124,4 +141,74 @@ export function getCurrentSeason(): Season {
  */
 export function getCurrentSeasonalTheme(): SeasonalTheme {
     return SEASONAL_THEMES[getCurrentSeason()];
+}
+
+/**
+ * Adjusts color brightness based on time of day
+ */
+function adjustColorBrightness(color: string, brightness: number): string {
+    // Parse hex color
+    const hex = color.replace("#", "");
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+
+    // Adjust brightness
+    const adjust = (c: number) =>
+        Math.min(255, Math.max(0, Math.round(c * brightness)));
+
+    return `#${adjust(r).toString(16).padStart(2, "0")}${adjust(g)
+        .toString(16)
+        .padStart(2, "0")}${adjust(b).toString(16).padStart(2, "0")}`;
+}
+
+/**
+ * Adjusts RGBA glow based on time of day
+ */
+function adjustGlow(
+    glow: string,
+    brightness: number,
+    saturation: number
+): string {
+    // Extract RGBA values
+    const match = glow.match(/rgba?\((\d+),\s*(\d+),\s*(\d+),\s*([\d.]+)\)/);
+    if (!match) return glow;
+
+    const [, r, g, b, a] = match;
+    const adjustedR = Math.round(parseInt(r) * saturation);
+    const adjustedG = Math.round(parseInt(g) * saturation);
+    const adjustedB = Math.round(parseInt(b) * saturation);
+    const adjustedA = parseFloat(a) * brightness;
+
+    return `rgba(${adjustedR},${adjustedG},${adjustedB},${adjustedA})`;
+}
+
+/**
+ * Gets combined season + time-of-day theme
+ */
+export function getCombinedTheme(): CombinedTheme {
+    const seasonalTheme = getCurrentSeasonalTheme();
+    const timeTheme = getCurrentTimeTheme();
+
+    return {
+        ...seasonalTheme,
+        timeOfDay: timeTheme.timeOfDay,
+        timeName: timeTheme.name,
+        timeTheme,
+        adjustedColors: {
+            background: adjustColorBrightness(
+                seasonalTheme.colors.background,
+                timeTheme.atmosphere.brightness
+            ),
+            primary: adjustColorBrightness(
+                seasonalTheme.colors.primary,
+                timeTheme.atmosphere.brightness * 1.2 // Slight boost for visibility
+            ),
+            glow: adjustGlow(
+                seasonalTheme.colors.glow,
+                timeTheme.atmosphere.brightness,
+                timeTheme.atmosphere.saturation
+            ),
+        },
+    };
 }

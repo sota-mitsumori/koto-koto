@@ -39,10 +39,20 @@ function TypingGameInner() {
     return (
         <div
             className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden font-zen-old-mincho select-none transition-colors duration-1000"
-            style={{ backgroundColor: seasonalTheme.colors.background }}
+            style={{ backgroundColor: seasonalTheme.adjustedColors.background }}
         >
             {/* Mobile Blocker */}
             <MobileBlocker />
+
+            {/* Time Overlay for atmosphere */}
+            <div
+                className="fixed inset-0 pointer-events-none z-1 transition-all duration-1000"
+                style={{
+                    backgroundColor:
+                        seasonalTheme.timeTheme.atmosphere.ambientOverlay,
+                    mixBlendMode: "overlay",
+                }}
+            />
 
             {/* Seasonal Particles */}
             <SeasonalParticles

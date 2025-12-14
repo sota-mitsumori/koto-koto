@@ -22,7 +22,7 @@ export default function TitleScreen({ onStart }: TitleScreenProps) {
             <h1
                 className="text-6xl md:text-8xl font-thin tracking-widest text-transparent bg-clip-text mb-4 opacity-90 transition-all duration-1000"
                 style={{
-                    backgroundImage: `linear-gradient(to bottom, ${seasonalTheme.colors.text}, ${seasonalTheme.colors.primary})`,
+                    backgroundImage: `linear-gradient(to bottom, ${seasonalTheme.colors.text}, ${seasonalTheme.adjustedColors.primary})`,
                 }}
             >
                 Koto-Koto
@@ -32,7 +32,7 @@ export default function TitleScreen({ onStart }: TitleScreenProps) {
             </p>
             <p
                 className="text-xs font-zen-old-mincho mt-4 opacity-60 transition-colors duration-1000"
-                style={{ color: seasonalTheme.colors.primary }}
+                style={{ color: seasonalTheme.adjustedColors.primary }}
             >
                 {seasonalTheme.haiku}
             </p>

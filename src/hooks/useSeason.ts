@@ -1,25 +1,23 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { getCurrentSeasonalTheme, type SeasonalTheme } from "@/config/seasons";
+import { getCombinedTheme, type CombinedTheme } from "@/config/seasons";
 
 /**
- * Hook to get the current seasonal theme
- * Updates whenever the component mounts (in case user keeps the app open across seasons)
+ * Hook to get the current seasonal + time-of-day theme
+ * Updates whenever the component mounts (in case user keeps the app open across seasons/times)
  */
 export function useSeason() {
-    const [seasonalTheme, setSeasonalTheme] = useState<SeasonalTheme>(() =>
-        getCurrentSeasonalTheme()
-    );
+    const [theme, setTheme] = useState<CombinedTheme>(() => getCombinedTheme());
 
     useEffect(() => {
-        // Check for season change every hour (in case user keeps app open)
+        // Check for season/time change every 10 minutes
         const interval = setInterval(() => {
-            setSeasonalTheme(getCurrentSeasonalTheme());
-        }, 1000 * 60 * 60); // 1 hour
+            setTheme(getCombinedTheme());
+        }, 1000 * 60 * 10); // 10 minutes
 
         return () => clearInterval(interval);
     }, []);
 
-    return seasonalTheme;
+    return theme;
 }

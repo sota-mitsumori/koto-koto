@@ -18,6 +18,17 @@ interface SeasonalParticlesProps {
     count?: number;
 }
 
+function generateParticles(count: number): SeasonalParticle[] {
+    return Array.from({ length: count }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        y: -10 - Math.random() * 50,
+        delay: Math.random() * 5,
+        duration: 10 + Math.random() * 10,
+        size: 0.8 + Math.random() * 0.4,
+    }));
+}
+
 /**
  * Animated seasonal particles (sakura petals, snowflakes, leaves, etc.)
  * Creates a subtle, zen atmosphere
@@ -28,14 +39,7 @@ export default function SeasonalParticles({
     count = 15,
 }: SeasonalParticlesProps) {
     const [particles] = useState<SeasonalParticle[]>(() =>
-        Array.from({ length: count }, (_, i) => ({
-            id: i,
-            x: Math.random() * 100,
-            y: -10 - Math.random() * 50,
-            delay: Math.random() * 5,
-            duration: 10 + Math.random() * 10,
-            size: 0.8 + Math.random() * 0.4,
-        }))
+        generateParticles(count)
     );
 
     return (

@@ -39,10 +39,10 @@ export default function GameHeader({
                 </span>
             </button>
 
-            {/* Center: Timer & Season */}
+            {/* Center: Timer & Season & Time */}
             <div className="flex flex-col items-center">
                 <span className="text-[10px] tracking-[0.2em] uppercase mb-1">
-                    {seasonalTheme.name.ja} • {seasonalTheme.name.en}
+                    {seasonalTheme.name.ja} • {seasonalTheme.timeName.ja}
                 </span>
                 <span className="text-xl font-inter font-light tracking-wider text-off-white">
                     {timeStr}

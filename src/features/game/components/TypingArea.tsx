@@ -56,7 +56,7 @@ export default function TypingArea({
                 className={`${textSizeClass} font-zen-old-mincho font-bold tracking-widest leading-relaxed wrap-break-word whitespace-pre-wrap max-w-5xl transition-all duration-1000`}
                 style={{
                     color: seasonalTheme.colors.text,
-                    textShadow: `0 0 30px ${seasonalTheme.colors.glow}`,
+                    textShadow: `0 0 30px ${seasonalTheme.adjustedColors.glow}`,
                 }}
             >
                 {display}
@@ -78,14 +78,14 @@ export default function TypingArea({
                         <motion.span
                             className="text-off-white relative mx-px font-bold transition-all duration-1000"
                             style={{
-                                textShadow: `0 0 15px ${seasonalTheme.colors.glow}`,
-                                color: seasonalTheme.colors.primary,
+                                textShadow: `0 0 15px ${seasonalTheme.adjustedColors.glow}`,
+                                color: seasonalTheme.adjustedColors.primary,
                             }}
                             animate={{
                                 textShadow: [
-                                    `0 0 10px ${seasonalTheme.colors.glow}`,
-                                    `0 0 20px ${seasonalTheme.colors.glow}`,
-                                    `0 0 10px ${seasonalTheme.colors.glow}`,
+                                    `0 0 10px ${seasonalTheme.adjustedColors.glow}`,
+                                    `0 0 20px ${seasonalTheme.adjustedColors.glow}`,
+                                    `0 0 10px ${seasonalTheme.adjustedColors.glow}`,
                                 ],
                             }}
                             transition={{
