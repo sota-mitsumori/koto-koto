@@ -2,7 +2,7 @@
 
 **Japanese Zen Typing**
 
-<img width="2048" height="2048" alt="koto-koto_banner" src="https://github.com/user-attachments/assets/80f81de5-e797-4387-8cee-efc4ef408129" />
+<img width="512" height="512" alt="koto-koto_banner" src="https://github.com/user-attachments/assets/80f81de5-e797-4387-8cee-efc4ef408129" />
 
 ## Overview
 
@@ -26,7 +26,7 @@ Built with **Next.js 16**, **TypeScript**, and **Framer Motion**, it features a 
 
 ## 🛠️ Tech Stack
 
--   **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+-   **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
 -   **Language**: [TypeScript](https://www.typescriptlang.org/)
 -   **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 -   **Animation**: [Framer Motion](https://www.framer.com/motion/)
@@ -103,7 +103,3 @@ src/
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
