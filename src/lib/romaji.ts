@@ -146,8 +146,6 @@ export const KANA_MAP: Record<string, string[]> = {
   "。": ["."],
 };
 
-// Check if a character is a vowel
-const isVowel = (char: string) => /^[aiueo]$/.test(char);
 // Check if a character is a consonant
 const isConsonant = (char: string) => /^[bcdfghjklmnpqrstvwxyz]$/.test(char);
 

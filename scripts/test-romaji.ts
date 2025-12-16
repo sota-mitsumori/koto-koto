@@ -36,11 +36,6 @@ let failed = 0;
 
 testCases.forEach(({ name, target, input, expected }) => {
   const result = checkRomaji(target, input);
-  const resultStr = result
-    ? result.isMatch
-      ? "Match"
-      : "No Match"
-    : "No Match";
 
   // Custom check for double consonant detail
   let pass = false;

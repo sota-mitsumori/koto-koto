@@ -8,7 +8,7 @@ export default function useSound() {
   useEffect(() => {
     // Initialize AudioContext on mount
     const AudioContextClass =
-      window.AudioContext || (window as any).webkitAudioContext;
+      window.AudioContext || (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
     if (AudioContextClass) {
       audioContextRef.current = new AudioContextClass();
     }
