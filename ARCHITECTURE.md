@@ -50,7 +50,7 @@ src/
 │   └── romaji.ts           # ローマ字変換
 │
 ├── data/                   # 静的データ
-│   └── words.ts            # 単語リスト
+│   └── sentences.ts        # 文リスト（青空文庫由来＋キュレーション）
 │
 └── hooks/                  # カスタムフック
     └── useSeason.ts        # 季節+時間帯検出フック

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sentence } from "../../../data/words";
+import { Sentence } from "../../../data/sentences";
 import { useSeasonalTheme } from "../../../contexts/SeasonalContext";
 
 interface TypingAreaProps {

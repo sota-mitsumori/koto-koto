@@ -81,7 +81,7 @@ src/
 │   └── timeOfDay.ts     # 4-time-of-day system
 ├── contexts/            # React Context (State Management)
 │   └── SeasonalContext.tsx  # Seasonal + Time-of-day theme provider
-├── data/                # Word lists and content
+├── data/                # Sentence lists and content
 ├── features/            # Feature-based modules
 │   ├── game/            # Core Game Logic
 │   │   ├── components/  # TitleScreen, GameHeader, TypingArea
@@ -95,7 +95,7 @@ src/
 ├── hooks/               # Custom hooks
 │   └── useSeason.ts     # Season + Time-of-day detection
 └── data/                # Static content
-    └── words.ts         # Word list
+    └── sentences.ts     # Literary sentences (Aozora + curated)
 ```
 
 ## 🎨 Design Philosophy
