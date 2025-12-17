@@ -53,7 +53,7 @@ export default function TypingArea({
                 key={currentWord.id}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className={`${textSizeClass} font-zen-old-mincho font-bold tracking-widest leading-relaxed wrap-break-word whitespace-pre-wrap transition-all duration-1000`}
+                className={`${textSizeClass} font-zen-old-mincho font-bold tracking-widest leading-relaxed wrap-break-word whitespace-pre-wrap max-w-5xl transition-all duration-1000`}
                 style={{
                     color: seasonalTheme.colors.text,
                     textShadow: `0 0 30px ${seasonalTheme.adjustedColors.glow}`,
