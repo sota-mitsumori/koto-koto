@@ -48,19 +48,34 @@ export default function TypingArea({
             animate={shake ? { x: [-10, 10, -10, 10, 0] } : {}}
             transition={{ duration: 0.3 }}
         >
-            {/* KANJI / VISUAL DISPLAY */}
-            <motion.div
-                key={currentWord.id}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className={`${textSizeClass} font-zen-old-mincho font-bold tracking-widest leading-relaxed wrap-break-word whitespace-pre-wrap max-w-5xl transition-all duration-1000`}
-                style={{
-                    color: seasonalTheme.colors.text,
-                    textShadow: `0 0 30px ${seasonalTheme.adjustedColors.glow}`,
-                }}
-            >
-                {display}
-            </motion.div>
+            {/* KANJI / VISUAL DISPLAY + Source */}
+            <div className="w-full max-w-5xl">
+                <motion.div
+                    key={currentWord.id}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className={`${textSizeClass} font-zen-old-mincho font-bold tracking-widest leading-relaxed wrap-break-word whitespace-pre-wrap transition-all duration-1000`}
+                    style={{
+                        color: seasonalTheme.colors.text,
+                        textShadow: `0 0 30px ${seasonalTheme.adjustedColors.glow}`,
+                    }}
+                >
+                    {display}
+                </motion.div>
+
+                {/* Source / Citation aligned to bottom-right of the text */}
+                {currentWord.meta && (
+                    <div className="mt-2 text-right text-xs md:text-sm text-white/60">
+                        出典:{" "}
+                        {currentWord.meta.author && (
+                            <span className="mr-1">{currentWord.meta.author}</span>
+                        )}
+                        {currentWord.meta.title && (
+                            <span>『{currentWord.meta.title}』</span>
+                        )}
+                    </div>
+                )}
+            </div>
 
             {/* Kana reading with progress */}
             <div
